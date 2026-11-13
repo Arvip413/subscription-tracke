@@ -1,0 +1,343 @@
+/* =====================================================
+   UI Library - CSS library
+   File: lib/ui-library.css
+
+   All classes start with "ui-".
+   Layout:   ui-header, ui-container, ui-layout, ui-card, ui-sticky
+   Summary:  ui-summary, ui-stat, ui-stat-number, ui-stat-label
+   Form:     ui-field, ui-error
+   Buttons:  ui-btn, ui-btn-primary, ui-btn-danger, ui-btn-block
+   Table:    ui-table, ui-table-wrap, ui-service, ui-avatar
+   Details:  ui-date, ui-chip, ui-badge, ui-empty, ui-hidden
+   Colours and sizes are variables in :root - change them there.
+   ===================================================== */
+
+
+/* ---------- Colours and sizes (change them here) ---------- */
+:root {
+  --ink: #12303b;
+  --ink-soft: #5b717a;
+  --line: #e3eaed;
+  --page: #f3f6f7;
+  --white: #ffffff;
+  --brand: #0e6b6f;
+  --brand-dark: #0a5457;
+  --brand-tint: #e0f1f0;
+  --active: #1f9d6b;
+  --active-tint: #def5ea;
+  --expired: #e2603b;
+  --expired-tint: #fde7e0;
+  --radius: 14px;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", Arial, Helvetica, sans-serif;
+  background: var(--page);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+h1, h2 { margin: 0; letter-spacing: -0.02em; }
+h2 { font-size: 20px; margin-bottom: 18px; }
+
+/* ---------- Header ---------- */
+.ui-header {
+  background: var(--ink);
+  color: var(--white);
+  padding: 44px 20px 90px;
+}
+.ui-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.ui-header h1 {
+  font-size: 38px;
+  font-weight: 800;
+}
+.ui-header p {
+  margin: 6px 0 0;
+  color: #a9c3c9;
+  font-size: 16px;
+}
+
+/* ---------- Layout ---------- */
+.ui-container {
+  max-width: 1100px;
+  margin: -56px auto 40px;   /* pulls the page up over the header */
+  padding: 0 20px;
+}
+
+.ui-layout {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.ui-sticky {
+  position: sticky;
+  top: 20px;
+}
+
+.ui-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px;
+  border: 1px solid var(--line);
+}
+
+/* ---------- Summary ---------- */
+.ui-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.ui-stat {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  border: 1px solid var(--line);
+  border-left-width: 8px;
+}
+.ui-stat-total { border-left-color: var(--brand); }
+.ui-stat-expired { border-left-color: var(--expired); }
+
+.ui-stat-number {
+  display: block;
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.ui-stat-total .ui-stat-number { color: var(--brand); }
+.ui-stat-expired .ui-stat-number { color: var(--expired); }
+
+.ui-stat-label {
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+/* ---------- Form ---------- */
+.ui-field { margin-bottom: 14px; }
+
+.ui-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ui-field input,
+.ui-field select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  background: var(--page);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 15px;
+}
+.ui-field input:focus,
+.ui-field select:focus {
+  outline: none;
+  border-color: var(--brand);
+  background: var(--white);
+  box-shadow: 0 0 0 3px var(--brand-tint);
+}
+
+.ui-error {
+  color: var(--expired);
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 20px;
+  margin: 0 0 8px;
+}
+
+/* ---------- Buttons ---------- */
+.ui-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 11px 18px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.ui-btn:focus-visible {
+  outline: 3px solid var(--brand-tint);
+  outline-offset: 2px;
+}
+.ui-btn-block { width: 100%; }
+
+.ui-btn-primary { background: var(--brand); color: var(--white); }
+.ui-btn-primary:hover { background: var(--brand-dark); }
+
+.ui-btn-danger {
+  background: transparent;
+  color: var(--ink-soft);
+  padding: 7px 12px;
+  font-size: 13px;
+  border: 1.5px solid var(--line);
+}
+.ui-btn-danger:hover {
+  background: var(--expired-tint);
+  border-color: var(--expired);
+  color: var(--expired);
+}
+
+/* ---------- Table ---------- */
+.ui-table-wrap { overflow-x: auto; }
+
+.ui-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.ui-table th {
+  text-align: left;
+  padding: 0 12px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  border-bottom: 2px solid var(--line);
+  white-space: nowrap;
+}
+.ui-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+  font-size: 15px;
+}
+.ui-table tbody tr:hover { background: var(--page); }
+.ui-table tbody tr:last-child td { border-bottom: none; }
+
+/* ---------- Service avatar ---------- */
+.ui-service {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+}
+.ui-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.ui-avatar-1 { background: #d6efee; color: #0a5457; }
+.ui-avatar-2 { background: #fde7e0; color: #b8431f; }
+.ui-avatar-3 { background: #e6e4fb; color: #4b43b5; }
+.ui-avatar-4 { background: #fff0c9; color: #8a6200; }
+.ui-avatar-5 { background: #e3f3d4; color: #3f7a17; }
+
+/* ---------- Date, chip and badge ---------- */
+.ui-date { font-weight: 600; }
+.ui-date-note {
+  display: block;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.ui-chip {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--page);
+  border: 1px solid var(--line);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.ui-badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.ui-badge-active { background: var(--active-tint); color: var(--active); }
+.ui-badge-expired { background: var(--expired-tint); color: var(--expired); }
+
+/* ---------- Empty message ---------- */
+.ui-empty {
+  text-align: center;
+  padding: 40px 10px 20px;
+  color: var(--ink-soft);
+}
+.ui-empty strong {
+  display: block;
+  color: var(--ink);
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+/* ---------- Helpers ---------- */
+.ui-hidden { display: none; }
+
+/* ---------- Tablet and phone ---------- */
+@media (max-width: 900px) {
+  .ui-layout { grid-template-columns: 1fr; }
+  .ui-sticky { position: static; }
+}
+
+@media (max-width: 640px) {
+  .ui-header { padding: 32px 20px 80px; }
+  .ui-header h1 { font-size: 28px; }
+  .ui-summary { grid-template-columns: 1fr; }
+  .ui-stat-number { font-size: 42px; }
+
+  /* the table becomes a list of cards */
+  .ui-table thead { display: none; }
+  .ui-table, .ui-table tbody, .ui-table tr, .ui-table td { display: block; }
+  .ui-table tr {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 8px 14px;
+    margin-bottom: 12px;
+  }
+  .ui-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line);
+    text-align: right;
+  }
+  .ui-table tbody tr:last-child td { border-bottom: 1px solid var(--line); }
+  .ui-table td:last-child { border-bottom: none; }
+  .ui-table td::before {
+    content: attr(data-label);
+    color: var(--ink-soft);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+  }
+  .ui-table td.ui-cell-service::before { content: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-btn { transition: none; }
+}
